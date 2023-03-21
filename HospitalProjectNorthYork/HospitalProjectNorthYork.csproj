@@ -187,7 +187,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303212137330_InitialCreate.cs" />
+    <Compile Include="Migrations\202303212137330_InitialCreate.designer.cs">
+      <DependentUpon>202303212137330_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303212141520_Appointment.cs" />
+    <Compile Include="Migrations\202303212141520_Appointment.designer.cs">
+      <DependentUpon>202303212141520_Appointment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303212146338_Department.cs" />
+    <Compile Include="Migrations\202303212146338_Department.designer.cs">
+      <DependentUpon>202303212146338_Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\Department.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -265,6 +280,17 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202303212137330_InitialCreate.resx">
+      <DependentUpon>202303212137330_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303212141520_Appointment.resx">
+      <DependentUpon>202303212141520_Appointment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303212146338_Department.resx">
+      <DependentUpon>202303212146338_Department.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
