@@ -18,7 +18,7 @@ namespace HospitalProjectNorthYork.Models
         //Date of the appointment
     }
     /* 
-     * TODO: Add foreign keys for the following tables: hi
+     * TODO: Add foreign keys for the following tables: 
      *       Patient_ID
      *       Doctor_ID
      *       Location_ID
