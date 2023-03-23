@@ -12,9 +12,9 @@ namespace HospitalProjectNorthYork.Models
         [Key]
         public int Appointment_ID { get; set; }
         //Primary Key
-        public string AppointmentDecs { get; set; }
+        public string AppointmentDesc { get; set; } 
         //Description of the appointment
-        public DateTime AppointDate { get; set; }
+        public DateTime AppointmentDate { get; set; }
         //Date of the appointment
     }
     /* 

@@ -199,6 +199,14 @@
     <Compile Include="Migrations\202303212146338_Department.designer.cs">
       <DependentUpon>202303212146338_Department.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303231743104_AppointmentRename.cs" />
+    <Compile Include="Migrations\202303231743104_AppointmentRename.designer.cs">
+      <DependentUpon>202303231743104_AppointmentRename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303231746086_AppointmentRename2.cs" />
+    <Compile Include="Migrations\202303231746086_AppointmentRename2.designer.cs">
+      <DependentUpon>202303231746086_AppointmentRename2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -290,6 +298,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303212146338_Department.resx">
       <DependentUpon>202303212146338_Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303231743104_AppointmentRename.resx">
+      <DependentUpon>202303231743104_AppointmentRename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303231746086_AppointmentRename2.resx">
+      <DependentUpon>202303231746086_AppointmentRename2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
