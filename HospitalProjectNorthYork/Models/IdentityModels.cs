@@ -29,6 +29,8 @@ namespace HospitalProjectNorthYork.Models
         //Create a table in the database called Appointments
         public DbSet<Department> Departments { get; set; }
         //Create a table in the database called Departments
+        public DbSet<Feedbacks> Feedbacks { get; set; }
+        //Create a table in the database called Feedbacks
 
         public static ApplicationDbContext Create()
         {
