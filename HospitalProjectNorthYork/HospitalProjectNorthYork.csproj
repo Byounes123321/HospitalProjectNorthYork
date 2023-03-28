@@ -230,6 +230,7 @@
     <Compile Include="Migrations\202303282155127_Patient_table.cs" />
     <Compile Include="Migrations\202303282155127_Patient_table.designer.cs">
       <DependentUpon>202303282155127_Patient_table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\202303282151206_locations.cs" />
     <Compile Include="Migrations\202303282151206_locations.designer.cs">
       <DependentUpon>202303282151206_locations.cs</DependentUpon>
@@ -355,6 +356,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303282155127_Patient_table.resx">
       <DependentUpon>202303282155127_Patient_table.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303282151206_locations.resx">
       <DependentUpon>202303282151206_locations.cs</DependentUpon>
     </EmbeddedResource>
