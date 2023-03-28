@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace HospitalProjectNorthYork.Models
 {
-    public class Locations
+    public class Location
     {
         [Key]
         public int Location_ID { get; set; }
