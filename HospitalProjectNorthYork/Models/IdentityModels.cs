@@ -39,6 +39,8 @@ namespace HospitalProjectNorthYork.Models
         //Create table named FAQS in db
         public DbSet<Patient> Patients { get; set; }
         //Create tabele named patients
+        public DbSet<Location> Locations { get; set; }
+        //Create table named Locations in db
 
         public static ApplicationDbContext Create()
         {
