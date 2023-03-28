@@ -227,9 +227,14 @@
     <Compile Include="Migrations\202303242300420_FAQ_table.designer.cs">
       <DependentUpon>202303242300420_FAQ_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303282151206_locations.cs" />
+    <Compile Include="Migrations\202303282151206_locations.designer.cs">
+      <DependentUpon>202303282151206_locations.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
+    <Compile Include="Models\Locations.cs" />
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Doctors.cs" />
     <Compile Include="Models\FAQ.cs" />
@@ -343,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303242300420_FAQ_table.resx">
       <DependentUpon>202303242300420_FAQ_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303282151206_locations.resx">
+      <DependentUpon>202303282151206_locations.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
