@@ -15,6 +15,8 @@ namespace HospitalProjectNorthYork.Models
         //Name of the location
         public string LocationDesc { get; set; }
         //Description of the location
-        
+        // A location can have multiple departments
+        public ICollection<Department> Departments { get; set; }
+
     }
 }

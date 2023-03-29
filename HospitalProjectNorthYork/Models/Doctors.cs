@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospitalProjectNorthYork.Models
 {
@@ -15,9 +16,12 @@ namespace HospitalProjectNorthYork.Models
         //Doctor name
         public string DoctorBio { get; set; }
         //Doctor bio
-/*
- * TODO: Add foreign keys for the following tables:
- * Department_ID
- */
-}
+        [ForeignKey("Department")]
+        public int Department_ID { get; set; }
+        public virtual Department Department { get; set; }
+        /*
+         * TODO: Add foreign keys for the following tables:
+         * Department_ID
+         */
+    }
 }

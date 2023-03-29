@@ -50,7 +50,6 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -58,7 +57,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -102,7 +100,6 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -239,6 +236,42 @@
     <Compile Include="Migrations\202303282225284_location.designer.cs">
       <DependentUpon>202303282225284_location.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303291816371_doctorFK.cs" />
+    <Compile Include="Migrations\202303291816371_doctorFK.designer.cs">
+      <DependentUpon>202303291816371_doctorFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291819358_feedbackFK.cs" />
+    <Compile Include="Migrations\202303291819358_feedbackFK.designer.cs">
+      <DependentUpon>202303291819358_feedbackFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291824157_visitFK.cs" />
+    <Compile Include="Migrations\202303291824157_visitFK.designer.cs">
+      <DependentUpon>202303291824157_visitFK.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291824533_visitFKNew.cs" />
+    <Compile Include="Migrations\202303291824533_visitFKNew.designer.cs">
+      <DependentUpon>202303291824533_visitFKNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291826538_appointmentFKpatient.cs" />
+    <Compile Include="Migrations\202303291826538_appointmentFKpatient.designer.cs">
+      <DependentUpon>202303291826538_appointmentFKpatient.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291831072_appointmentFKdoctor.cs" />
+    <Compile Include="Migrations\202303291831072_appointmentFKdoctor.designer.cs">
+      <DependentUpon>202303291831072_appointmentFKdoctor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291832172_appointmentFKlocation.cs" />
+    <Compile Include="Migrations\202303291832172_appointmentFKlocation.designer.cs">
+      <DependentUpon>202303291832172_appointmentFKlocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291838026_departmentsLocations.cs" />
+    <Compile Include="Migrations\202303291838026_departmentsLocations.designer.cs">
+      <DependentUpon>202303291838026_departmentsLocations.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202303291841530_departmentsFAQs.cs" />
+    <Compile Include="Migrations\202303291841530_departmentsFAQs.designer.cs">
+      <DependentUpon>202303291841530_departmentsFAQs.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Appointment.cs" />
@@ -366,6 +399,33 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303282225284_location.resx">
       <DependentUpon>202303282225284_location.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291816371_doctorFK.resx">
+      <DependentUpon>202303291816371_doctorFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291819358_feedbackFK.resx">
+      <DependentUpon>202303291819358_feedbackFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291824157_visitFK.resx">
+      <DependentUpon>202303291824157_visitFK.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291824533_visitFKNew.resx">
+      <DependentUpon>202303291824533_visitFKNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291826538_appointmentFKpatient.resx">
+      <DependentUpon>202303291826538_appointmentFKpatient.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291831072_appointmentFKdoctor.resx">
+      <DependentUpon>202303291831072_appointmentFKdoctor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291832172_appointmentFKlocation.resx">
+      <DependentUpon>202303291832172_appointmentFKlocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291838026_departmentsLocations.resx">
+      <DependentUpon>202303291838026_departmentsLocations.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303291841530_departmentsFAQs.resx">
+      <DependentUpon>202303291841530_departmentsFAQs.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

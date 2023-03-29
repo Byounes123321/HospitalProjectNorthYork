@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospitalProjectNorthYork.Models
 {
@@ -13,6 +14,12 @@ namespace HospitalProjectNorthYork.Models
         //primary key for feedbacks table
         public string FeedbackDesc { get; set; }
         //Feedback description 
+        [ForeignKey("Patient")]
+        public int Patient_ID { get; set; }
+        public virtual Patient Patient { get; set; }
+        [ForeignKey("Appointment")]
+        public int Appointment_ID { get; set; }
+        public virtual Appointment Appointment { get; set; }
     }
     /*  
      * TODO: Add foreign keys for the following tables:
