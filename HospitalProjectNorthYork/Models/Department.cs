@@ -19,4 +19,11 @@ namespace HospitalProjectNorthYork.Models
         // A department can have multiple FAQs
         public ICollection<FAQ> FAQs { get; set; }
     }
+    public class DepartmentDto
+    {
+        public int Department_ID { get; set; }
+        public string DepartmentName { get; set;}
+        public string DepartmentDesc { get; set; }
+
+    }
 }

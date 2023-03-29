@@ -179,6 +179,8 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppointmentDataController.cs" />
+    <Compile Include="Controllers\DepartmentDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -296,6 +298,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="jsondata\Appointment.json" />
+    <None Include="jsondata\Departments.json" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
@@ -346,6 +350,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\AppointmentData\" />
+    <Folder Include="Views\DepartmentData\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -372,6 +378,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303231743104_AppointmentRename.resx">
       <DependentUpon>202303231743104_AppointmentRename.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303231746086_AppointmentRename2.resx">
       <DependentUpon>202303231746086_AppointmentRename2.cs</DependentUpon>
