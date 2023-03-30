@@ -45,7 +45,7 @@ namespace HospitalProjectNorthYork.Controllers
             return Ok(DepartmentDtos);
 
         }
-        /*
+        
         /// <summary>
         /// Returns a list of all Departments in the system by location id
         /// </summary>
@@ -62,14 +62,14 @@ namespace HospitalProjectNorthYork.Controllers
         [ResponseType(typeof(DepartmentDto))]
         public IHttpActionResult ListDepartmentsForLocation(int Location_ID)
         {
+
             List<Department> Departments = db.Departments.Where(
-                a => a.Location_ID == Location_ID
-                ).ToList();
-            // I don't know how to get the data from the bridge table
-     
+             a => a.Locations.Any(
+                 k => k.Location_ID == Location_ID
+             )).ToList();
 
             List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
-        
+
 
             Departments.ForEach(a => DepartmentDtos.Add(new DepartmentDto()
             {
@@ -80,7 +80,7 @@ namespace HospitalProjectNorthYork.Controllers
 
             return Ok(DepartmentDtos);
         }
-        */
+        
 
         /// <summary>
         /// Adds an Department to the system
