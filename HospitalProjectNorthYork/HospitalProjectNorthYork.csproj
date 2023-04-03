@@ -183,7 +183,9 @@
     <Compile Include="Controllers\DepartmentDataController.cs" />
     <Compile Include="Controllers\FAQDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LocationDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PatientDataController.cs" />
     <Compile Include="Controllers\VisitDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -300,6 +302,8 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <None Include="jsondata\patient.json" />
+    <None Include="jsondata\location.json" />
     <None Include="jsondata\Appointment.json" />
     <None Include="jsondata\Departments.json" />
     <None Include="jsondata\FAQ.json" />
