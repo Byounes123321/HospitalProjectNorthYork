@@ -10,20 +10,29 @@ namespace HospitalProjectNorthYork.Models
     public class Feedbacks
     {
         [Key]
-        public int Feedback_ID { get; set; }
         //primary key for feedbacks table
-        public string FeedbackDesc { get; set; }
+        public int Feedback_ID { get; set; }
         //Feedback description 
+        public string FeedbackDesc { get; set; }
+        //associated patient
         [ForeignKey("Patient")]
         public int Patient_ID { get; set; }
         public virtual Patient Patient { get; set; }
+        //associated appointment
         [ForeignKey("Appointment")]
         public int Appointment_ID { get; set; }
         public virtual Appointment Appointment { get; set; }
     }
-    /*  
-     * TODO: Add foreign keys for the following tables:
-     * Appointment_ID
-     * Paitent_ID
-     * */
+    public class FeedbacksDto
+    {
+        public int Feedback_ID { get; set; }
+        public string FeedbackDesc { get; set; }
+        public int Patient_ID { get; set; }
+        public string PatientName { get; set; }
+        public int Appointment_ID { get;set; }
+        public string AppointmentDesc { get; set; }
+        public DateTime AppointmentDate { get; set; }
+
+    }
+
 }

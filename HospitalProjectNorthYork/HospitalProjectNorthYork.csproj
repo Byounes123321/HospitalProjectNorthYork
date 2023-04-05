@@ -181,7 +181,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppointmentDataController.cs" />
     <Compile Include="Controllers\DepartmentDataController.cs" />
+    <Compile Include="Controllers\DoctorsDataController.cs" />
     <Compile Include="Controllers\FAQDataController.cs" />
+    <Compile Include="Controllers\FeedbacksDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
