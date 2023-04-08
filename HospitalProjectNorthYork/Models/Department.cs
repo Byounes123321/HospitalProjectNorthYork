@@ -24,6 +24,8 @@ namespace HospitalProjectNorthYork.Models
         public int Department_ID { get; set; }
         public string DepartmentName { get; set;}
         public string DepartmentDesc { get; set; }
-
+        public int Location_ID { get; set; }
+        public string LocationName { get; set; }
+        public int Faq_ID { get; set; } 
     }
 }

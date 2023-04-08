@@ -41,8 +41,11 @@ namespace HospitalProjectNorthYork.Controllers
                 AppointmentDesc = a.AppointmentDesc,
                 AppointmentDate = a.AppointmentDate,
                 Patient_ID = a.Patient_ID,
+                PatientName = a.Patient.PatientName,
                 Doctor_ID = a.Doctor_ID,
-                Location_ID = a.Location_ID
+                DoctorName = a.Doctors.DoctorName,
+                Location_ID = a.Location_ID,
+                LocaitonName = a.Location.LocaitonName,
             }));
 
             return Ok(AppointmentDtos);
@@ -74,8 +77,11 @@ namespace HospitalProjectNorthYork.Controllers
                 AppointmentDesc = a.AppointmentDesc,
                 AppointmentDate = a.AppointmentDate,
                 Patient_ID = a.Patient_ID,
+                PatientName = a.Patient.PatientName,
                 Doctor_ID = a.Doctor_ID,
-                Location_ID = a.Location_ID
+                DoctorName = a.Doctors.DoctorName,
+                Location_ID = a.Location_ID,
+                LocaitonName = a.Location.LocaitonName,
             }));
 
             return Ok(AppointmentDtos);
@@ -106,12 +112,51 @@ namespace HospitalProjectNorthYork.Controllers
                 AppointmentDesc = a.AppointmentDesc,
                 AppointmentDate = a.AppointmentDate,
                 Patient_ID = a.Patient_ID,
+                PatientName = a.Patient.PatientName,
                 Doctor_ID = a.Doctor_ID,
-                Location_ID = a.Location_ID
+                DoctorName = a.Doctors.DoctorName,
+                Location_ID = a.Location_ID,
+                LocaitonName = a.Location.LocaitonName,
             }));
 
             return Ok(AppointmentDtos);
         }
+        /// <summary>
+        /// Returns a list of all Appointments in the system by Location id
+        /// </summary>
+        /// <param name="Location_ID">Primary key in the Location table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all Appointments in the database by specific location id, including their associated data
+        /// </returns>
+        /// <example>
+        /// GET: api/AppointmentData/ListAppointmentsForLocation/{Location_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/AppointmentData/ListAppointmentsForLocation/{Location_ID}")]
+        [ResponseType(typeof(AppointmentDto))]
+        public IHttpActionResult ListAppointmentsForLocation(int Location_ID)
+        {
+            List<Appointment> Appointments = db.Appointments.Where(a => a.Location_ID == Location_ID).ToList();
+            List<AppointmentDto> AppointmentDtos = new List<AppointmentDto>();
+
+            Appointments.ForEach(a => AppointmentDtos.Add(new AppointmentDto()
+            {
+                Appointment_ID = a.Appointment_ID,
+                AppointmentDesc = a.AppointmentDesc,
+                AppointmentDate = a.AppointmentDate,
+                Patient_ID = a.Patient_ID,
+                PatientName = a.Patient.PatientName,
+                Doctor_ID = a.Doctor_ID,
+                DoctorName = a.Doctors.DoctorName,
+                Location_ID = a.Location_ID,
+                LocaitonName = a.Location.LocaitonName,
+            }));
+
+            return Ok(AppointmentDtos);
+        }
+
+
         ///<summary>
         ///Returns a specific Appointment called by its id
         /// </summary>
@@ -137,8 +182,11 @@ namespace HospitalProjectNorthYork.Controllers
                 AppointmentDesc = a.AppointmentDesc,
                 AppointmentDate = a.AppointmentDate,
                 Patient_ID = a.Patient_ID,
+                PatientName = a.Patient.PatientName,
                 Doctor_ID = a.Doctor_ID,
-                Location_ID = a.Location_ID
+                DoctorName = a.Doctors.DoctorName,
+                Location_ID = a.Location_ID,
+                LocaitonName = a.Location.LocaitonName,
             }));
 
             return Ok(AppointmentDtos);
