@@ -1,0 +1,23 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.AppointmentList
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Appointment List</h2>
+<a href="/Appointment/New">Add Appointment</a>
+<div>
+    @foreach(var app in Model.Appointments)
+    {
+        <div>
+            <a href="/Appointment/Details/@app.Appointment_ID">
+                <h3>Appointment ID: @app.Appointment_ID</h3>
+                <p>@app.AppointmentDate</p>
+                <p>@app.AppointmentDesc</p>
+                <p>@app.DoctorName</p>
+                <p>@app.LocaitonName</p>
+            </a>
+        </div>
+    }         
+</div>
+
+

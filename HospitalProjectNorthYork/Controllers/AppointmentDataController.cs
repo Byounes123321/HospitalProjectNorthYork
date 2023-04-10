@@ -260,6 +260,8 @@ namespace HospitalProjectNorthYork.Controllers
         [HttpPost]
         public IHttpActionResult AddAppointment(Appointment Appointment)
         {
+            //Debug.WriteLine(AddAppointment(Appointment));
+            //Debug.WriteLine("entered add method");
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
