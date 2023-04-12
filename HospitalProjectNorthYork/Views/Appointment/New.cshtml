@@ -1,0 +1,46 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.NewAppointment
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Appointment</h2>
+<form action="/Appointment/Create" method="post">
+    <div>
+        <label for="AppointmentDesc">Description: </label>
+        <input type="text" id="AppointmentDesc" name="AppointmentDesc" />
+    </div>
+    <div>
+        <label for="AppointmentDate">Date: </label>
+        <input type="date" id="AppointmentDate" name="AppointmentDate" />
+    </div>
+    <div>
+        <label for="PName">Patient: </label>
+        <select id="Patient_ID" name="Patient_ID">
+            @foreach (var P in Model.Patient)
+            {
+                <option value="@P.Patient_ID">@P.PatientName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="DName">Doctor: </label>
+        <select id="Doctor_ID" name="Doctor_ID">
+            @foreach (var d in Model.Doctor)
+            {
+                <option value="@d.Doctor_ID">@d.DoctorName</option>
+            }
+        </select>
+    </div>
+    <div>           
+        <label for="LName">Location: </label>
+        <select id="Location_ID" name="Location_ID">
+            @foreach (var l in Model.Location)
+            {
+                <option value="@l.Location_ID">@l.LocaitonName</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Add Appointment"/>
+</form>
+
+

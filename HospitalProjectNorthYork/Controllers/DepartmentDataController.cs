@@ -39,7 +39,7 @@ namespace HospitalProjectNorthYork.Controllers
             {
                 Department_ID = a.Department_ID,
                 DepartmentName = a.DepartmentName,
-                DepartmentDesc = a.DepartmentDesc
+                DepartmentDesc = a.DepartmentDesc,
             }));
 
             return Ok(DepartmentDtos);
@@ -80,7 +80,41 @@ namespace HospitalProjectNorthYork.Controllers
 
             return Ok(DepartmentDtos);
         }
-        
+        /// <summary>
+        /// Returns a list of all Departments in the system by FAQ id
+        /// </summary>
+        /// <param name="faq_id">Primary key in the FAQ table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all Departments in the database by specific FAQ id, including their associated data
+        /// </returns>
+        /// <example>
+        /// GET: api/DepartmentData/ListDepartmentsForFAQ/{FAQ_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/DepartmentData/ListDepartmentsForFAQ/{FAQ_ID}")]
+        [ResponseType(typeof(DepartmentDto))]
+        public IHttpActionResult ListDepartmentsForFAQ(int Faq_ID)
+        {
+
+            List<Department> Departments = db.Departments.Where(
+             a => a.FAQs.Any(
+                 k => k.Faq_ID == Faq_ID
+             )).ToList();
+
+            List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
+
+
+            Departments.ForEach(a => DepartmentDtos.Add(new DepartmentDto()
+            {
+                Department_ID = a.Department_ID,
+                DepartmentName = a.DepartmentName,
+                DepartmentDesc = a.DepartmentDesc
+            }));
+
+            return Ok(DepartmentDtos);
+        }
+
 
         /// <summary>
         /// Adds an Department to the system
@@ -201,6 +235,72 @@ namespace HospitalProjectNorthYork.Controllers
         private bool DepartmentExists(int Department_ID)
         {
             return db.Departments.Count(e => e.Department_ID == Department_ID) > 0;
+        }
+
+        /// <summary>
+        /// Associates a particular department with a location animal
+        /// </summary>
+        /// <param name="Department_ID">The animal ID department key</param>
+        /// <param name="Location_ID">The keeper ID location key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/DepartmentData/AssociateDepartmentWithLocation/2/1
+        /// </example>
+        [HttpPost]
+        [Route("api/DepartmentData/AssociateDepartmentWithLocation/{Department_ID}/{Location_ID}")]
+        [Authorize]
+        public IHttpActionResult AssociateDepartmentWithLocation(int Department_ID, int Location_ID)
+        {
+
+            Department SelectedDepartment = db.Departments.Include(a => a.Locations).Where(a => a.Department_ID == Department_ID).FirstOrDefault();
+            Location SelectedLocation = db.Locations.Find(Location_ID);
+
+            if (SelectedDepartment == null || SelectedLocation == null)
+            {
+                return NotFound();
+            }
+
+            SelectedDepartment.Locations.Add(SelectedLocation);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Associates a particular department with a particular FAQ association
+        /// </summary>
+        /// <param name="Department_ID"></param>
+        /// <param name="FAQ_ID"></param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/DepartmentData/AssociateDepartmentWithFAQ/2/1
+        /// </example>
+        [HttpPost]
+        [Route("api/DepartmentData/AssociateDepartmentWithFAQ/{Department_ID}/{FAQ_ID}")]
+        [Authorize]
+        public IHttpActionResult AssociateDepartmentWithFAQ(int Department_ID, int FAQ_ID)
+        {
+
+            Department SelectedDepartment = db.Departments.Include(a => a.FAQs).Where(a => a.Department_ID == Department_ID).FirstOrDefault();
+            FAQ SelectedFAQ = db.FAQS.Find(FAQ_ID);
+
+            if (SelectedDepartment == null || SelectedFAQ == null)
+            {
+                return NotFound();
+            }
+
+            SelectedDepartment.FAQs.Add(SelectedFAQ);
+            db.SaveChanges();
+
+            return Ok();
         }
     }
 }
