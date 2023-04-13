@@ -252,7 +252,6 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [HttpPost]
         [Route("api/DepartmentData/AssociateDepartmentWithLocation/{Department_ID}/{Location_ID}")]
-        [Authorize]
         public IHttpActionResult AssociateDepartmentWithLocation(int Department_ID, int Location_ID)
         {
 
@@ -285,7 +284,6 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [HttpPost]
         [Route("api/DepartmentData/AssociateDepartmentWithFAQ/{Department_ID}/{FAQ_ID}")]
-        [Authorize]
         public IHttpActionResult AssociateDepartmentWithFAQ(int Department_ID, int FAQ_ID)
         {
 
@@ -298,6 +296,71 @@ namespace HospitalProjectNorthYork.Controllers
             }
 
             SelectedDepartment.FAQs.Add(SelectedFAQ);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Removes an association between a particular department and a location animal
+        /// </summary>
+        /// <param name="department_ID">The department ID primary key</param>
+        /// <param name="Location_ID">The location ID primary key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/departmentData/UnAssociateDepartmentWithLocaiton/9/1
+        /// </example>
+        [HttpPost]
+        [Route("api/departmentData/UnAssociateDepartmentWithLocaiton/{Department_Id}/{Location_ID}")]
+        public IHttpActionResult UnAssociateDepartmentWithLocaiton(int Department_ID, int Location_ID)
+        {
+
+            Department SelectedDepartment = db.Departments.Include(a => a.Locations).Where(a => a.Department_ID == Department_ID).FirstOrDefault();
+            Location SelectedLocation = db.Locations.Find(Location_ID);
+
+            if (SelectedDepartment == null || SelectedLocation == null)
+            {
+                return NotFound();
+            }
+
+
+            SelectedDepartment.Locations.Remove(SelectedLocation);
+            db.SaveChanges();
+
+            return Ok();
+        }
+        /// <summary>
+        /// Removes an association between a particular department and a FAQ 
+        /// </summary>
+        /// <param name="department_ID">The department ID primary key</param>
+        /// <param name="FAQ_ID">The FAQ ID primary key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/departmentData/UnAssociateDepartmentWithFAQ/9/1
+        /// </example>
+        [HttpPost]
+        [Route("api/departmentData/UnAssociateDepartmentWithFAQ/{Department_Id}/{FAQ_ID}")]
+        public IHttpActionResult UnAssociateDepartmentWithFAQ(int Department_ID, int FAQ_ID)
+        {
+
+            Department SelectedDepartment = db.Departments.Include(a => a.FAQs).Where(a => a.Department_ID == Department_ID).FirstOrDefault();
+            FAQ SelectedFAQ = db.FAQS.Find(FAQ_ID);
+
+            if (SelectedDepartment == null || SelectedFAQ == null)
+            {
+                return NotFound();
+            }
+
+
+            SelectedDepartment.FAQs.Remove(SelectedFAQ);
             db.SaveChanges();
 
             return Ok();
