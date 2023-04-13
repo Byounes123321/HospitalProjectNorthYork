@@ -64,8 +64,8 @@ namespace HospitalProjectNorthYork.Controllers
             url = "DoctorsData/FindDoctor/" + appointment.Doctor_ID;
             response = client.GetAsync(url).Result;
 
-            DoctorsDto docter = response.Content.ReadAsAsync<DoctorsDto>().Result;
-            viewModel.Docter = docter;
+            DoctorsDto doctor = response.Content.ReadAsAsync<DoctorsDto>().Result;
+            viewModel.Docter = doctor;
 
 
             url = "LocationData/FindLocation/" + appointment.Location_ID;
