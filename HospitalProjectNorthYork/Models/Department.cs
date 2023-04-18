@@ -14,11 +14,14 @@ namespace HospitalProjectNorthYork.Models
         //Name of the department
         public string DepartmentDesc { get; set; }
         //Description of the department
-        // A department can be at multiple locations
         public ICollection<Location> Locations { get; set; }
-        // A department can have multiple FAQs
+        // A department can be at multiple locations
         public ICollection<FAQ> FAQs { get; set; }
+        // A department can have multiple FAQs
+
     }
+
+
     public class DepartmentDto
     {
         public int Department_ID { get; set; }

@@ -199,7 +199,7 @@ namespace HospitalProjectNorthYork.Controllers
                 return RedirectToAction("Error");
             }
         }
-        // GET: RecipientData/Delete/5
+        // GET: AppointmentData/Delete/5
         public ActionResult DeleteConfirm(int id)
         {
 
@@ -212,7 +212,7 @@ namespace HospitalProjectNorthYork.Controllers
             return View(SelectedAppointment);
         }
 
-        // POST: gift/Delete/5
+        // POST: appointment/Delete/5
         [HttpPost]
         public ActionResult Delete(int id)
         {

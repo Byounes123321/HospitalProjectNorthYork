@@ -3,53 +3,31 @@
     ViewBag.Title = "Details";
 }
 <a href="/Department/Edit/@Model.SelectedDepartment.Department_ID">EDIT</a>
-<a href="/Department/DeleteConfirm/@Model.SelectedDepartment.Department_ID">DELETE</a>
+<a href="/Department/DeleteConfirm/@Model.SelectedDepartment.Department_ID" style="color:red"><strong>DELETE</strong></a>
+<a href="/Department/list">Back to list</a>
 <h2>@Model.SelectedDepartment.DepartmentName details</h2>
 <p>Desc: @Model.SelectedDepartment.DepartmentDesc</p>
 
-<div class="col-md-6 col-sm-12">
-    <h4>Locations for @Model.SelectedDepartment.DepartmentName:</h4>
-    @foreach (var l in Model.Location)
-    {
-
-        <a href="/location/Details/@l.Location_ID">@l.LocaitonName</a>
-
-        <a style="color:#ab2020;" href="/Department/Unassociate/@Model.SelectedDepartment.Department_ID?Location_ID=@l.Location_ID">[x]</a>
-        <br />
-    }
-
-    <div>
-        <form method="POST" action="/Department/Associate/@Model.SelectedDepartment.Department_ID">
-            <select name="Location_ID">
-                <option value="">Select Location</option>
-                @foreach (var l in Model.Location)
-                {
-                    <option value="@l.Location_ID">@l.LocaitonName</option>
-                }
-            </select>
-            <input type="submit" value="Add Location" />
-        </form>
-    </div>
-</div>
 
 
 <div class="col-md-6 col-sm-12">
     <h4>FAQs for @Model.SelectedDepartment.DepartmentName:</h4>
-    @foreach (var f in Model.FAQs)
+    @foreach (var f in Model.RelatedFAQs)
     {
 
         <a href="/FAQ/Details/@f.Faq_ID">@f.Ques @f.Answer</a>
 
-        <a style="color:#ab2020;" href="/Department/Unassociate/@Model.SelectedDepartment.Department_ID?FAQ_ID=@f.Faq_ID">[x]</a>
+        <a style="color:#ab2020;" href="/Department/UnassociateFAQ/@Model.SelectedDepartment.Department_ID?FAQ_ID=@f.Faq_ID">[x]</a>
         <br />
     }
 
     <div>
 
-        <form method="POST" action="/Department/Associate/@Model.SelectedDepartment.Department_ID">
-            <select name="FAQ_ID">q
-                <option value="">Select FA</option>
-                @foreach (var f in Model.FAQs)
+        <form method="POST" action="/Department/AssociateFAQ/@Model.SelectedDepartment.Department_ID">
+            <select name="FAQ_ID">
+                q
+                <option value="">Select FAQ</option>
+                @foreach (var f in Model.UnrelatedFAQs)
                 {
                     <option value="@f.Faq_ID">@f.Ques @f.Answer</option>
                 }
@@ -61,8 +39,28 @@
 
 </div>
 
+<!--<div class="col-md-6 col-sm-12">
+    <h4>Locations for Model.SelectedDepartment.DepartmentName:</h4>
+    foreach (var l in Model.RelatedLocations)
+    {
 
+        <a href="/location/Details/l.Location_ID">l.LocaitonName</a>
 
+        <a style="color:#ab2020;" href="/Department/Unassociate/Model.SelectedDepartment.Department_ID?Location_ID=l.Location_ID">[x]</a>
+        <br />
+    }
 
-
-
+    <div>
+        <form method="POST" action="/Department/Associate/Model.SelectedDepartment.Department_ID">
+            <select name="Location_ID">
+                <option value="">Select Location</option>
+                foreach (var l in Model.unrelatedLocations)
+                {
+                    <option value="l.Location_ID">l.LocaitonName</option>
+                }
+            </select>
+            <input type="submit" value="Add Location" />
+        </form>
+    </div>
+</div>
+-->

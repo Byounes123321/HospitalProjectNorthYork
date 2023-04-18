@@ -39,7 +39,7 @@ namespace HospitalProjectNorthYork.Controllers
         }
 
         [HttpGet]
-        [Route("api/DepartmentData/ListFAQSForDepartment/{Department_ID}")]
+        [Route("api/FAQData/ListFAQSForDepartment/{Department_ID}")]
         [ResponseType(typeof(FAQDto))]
         public IHttpActionResult ListFAQSForDepartment(int Department_ID)
         {
@@ -63,7 +63,7 @@ namespace HospitalProjectNorthYork.Controllers
         }
 
         [HttpGet]
-        [Route("api/DepartmentData/ListFAQSNotForDepartment/{Department_ID}")]
+        [Route("api/FAQData/ListFAQSNotForDepartment/{Department_ID}")]
         [ResponseType(typeof(FAQDto))]
         public IHttpActionResult ListFAQSNotForDepartment(int Department_ID)
         {

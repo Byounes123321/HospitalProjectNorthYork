@@ -8,8 +8,10 @@ namespace HospitalProjectNorthYork.Models.ViewModels
     public class DepartmentDetails
     {
         public DepartmentDto SelectedDepartment { get; set; }
-        public IEnumerable<FAQDto> FAQs { get;set; }
-        public IEnumerable<LocationDto> Location { get; set; }       
+        public IEnumerable<FAQDto> RelatedFAQs { get;set; }
+        public IEnumerable<FAQDto> UnrelatedFAQs { get; set; }
+        //public IEnumerable<LocationDto> RelatedLocations { get; set; }
+        //public IEnumerable<LocationDto> unrelatedLocations { get; set; }
 
     }
 }
