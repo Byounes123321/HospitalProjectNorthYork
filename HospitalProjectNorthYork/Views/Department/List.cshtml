@@ -1,0 +1,22 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.DepartmentList
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Department List</h2>
+<a href="/Department/New">Add Department</a>
+<div>
+    @foreach (var dep in Model.Departments)
+    {
+        <div>
+            <a href="/department/Details/@dep.Department_ID">
+                <h3>Department ID:@dep.Department_ID</h3>
+                <p>@dep.DepartmentName</p>
+                <p>@dep.DepartmentDesc</p>
+                <p>@dep.LocationName</p>
+            </a>
+        </div>
+    }
+</div>
+
+

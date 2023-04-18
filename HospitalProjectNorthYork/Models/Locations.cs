@@ -25,5 +25,7 @@ namespace HospitalProjectNorthYork.Models
         public string LocaitonName { get; set; }
         //Name of the location
         public string LocationDesc { get; set; }
+        public 
+    
     }
 }

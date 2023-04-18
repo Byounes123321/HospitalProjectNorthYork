@@ -1,0 +1,42 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.DepartmentUpdate
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Department</h2>
+<form action="/Department/Update/@Model.SelectedDepartment.Department_ID" method="post">
+    <div style="display:none;">
+        <input type="number" name="Department_ID" id="Department_ID" value="@Model.SelectedDepartment.Department_ID" />
+    </div>
+    <div>
+        <label for="DepartmentName">Name: </label>
+        <input type="text" id="DepartmentName" name="DepartmentName" value="@Model.SelectedDepartment.DepartmentName" />
+    </div>
+    <div>
+        <label for="DepartmentDesc">Description: </label>
+        <input type="text" id="DepartmentDesc" name="DepartmentDesc" value="@Model.SelectedDepartment.DepartmentDesc" />
+    </div>
+
+    <div>
+        <label for="FAQ">FAQS: </label>
+        @foreach (var f in Model.FAQ)
+        {
+            <input type="checkbox" id="@f.Faq_ID" value="@f.Faq_ID" @if (f.Faq_ID == Model.SelectedDepartment.Faq_ID) { checked {} } />
+
+            <label for="@f.Faq_ID">@f.Ques/@f.Answer</label>
+        }
+    </div>
+    <div>
+        <label for="Location">Location: </label>
+        @foreach (var l in Model.location)
+        {
+            <input type="checkbox" id="@l.Location_ID" value="@l.Location_ID" @if (l.Location_ID == Model.SelectedDepartment.Location_ID){ checked { } } />
+
+            <label for="@l.Location_ID">@l.LocaitonName</label>
+        }
+    </div>
+   
+    <input type="submit" value="Update Department" />
+</form>
+
+

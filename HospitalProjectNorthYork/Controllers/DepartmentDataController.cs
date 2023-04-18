@@ -115,7 +115,32 @@ namespace HospitalProjectNorthYork.Controllers
             return Ok(DepartmentDtos);
         }
 
+        ///<summary>
+        ///Returns a specific Department called by its id
+        /// </summary>
+        /// <param name="Department_ID"> Primary key in the departments table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: Department in the database that matching the Department_ID key
+        /// </returns>
+        /// <example>
+        /// GET: api/DepartmentData/FindDepartment/{Appointment_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/DepartmentData/FindDepartment/{Department_ID}")]
+        [ResponseType(typeof(DepartmentDto))]
+        public IHttpActionResult FindDepartment(int Department_ID)
+        {
+            Department Department = db.Departments.Find(Department_ID);
+            DepartmentDto departmentDto = new DepartmentDto()
+            {
+                Department_ID = Department.Department_ID,
+                DepartmentName =Department.DepartmentName,    
+                DepartmentDesc= Department.DepartmentDesc,
+            };
 
+            return Ok(departmentDto);
+        }
         /// <summary>
         /// Adds an Department to the system
         /// </summary>
