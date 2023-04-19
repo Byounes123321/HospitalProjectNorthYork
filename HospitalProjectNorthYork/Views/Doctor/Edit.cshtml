@@ -1,0 +1,33 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.DoctorUpdate
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="detailsContainer">
+    <h2>Edit doctor</h2>
+    <form class="formAction" action="/Doctor/Update/@Model.SelectedDoctor.Doctor_ID" method="POST">
+        <div style="display:none">
+            <input type="text" name="Doctor_ID" value="@Model.SelectedDoctor.Doctor_ID" />
+        </div>
+        <div>
+            <label>Name: </label><input type="text" name="DoctorName" value="@Model.SelectedDoctor.DoctorName" />
+        </div>
+        <div>
+            <label>Bio: </label><textarea name="DoctorBio" placeholder="Bio of Doctor">@Model.SelectedDoctor.DoctorBio</textarea>
+        </div>
+        <div>
+            <label>Department:</label>
+            <select name="Department_ID">
+                @foreach (var department in Model.DepartmentOptions)
+                {
+                    <option value="@department.Department_ID">@department.DepartmentName</option>
+
+                }
+            </select>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-success" style="margin-top: 20px;" value="Update Doctor" />
+        </div>
+    </form>
+</div>
+
