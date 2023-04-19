@@ -186,6 +186,7 @@
     <Compile Include="Controllers\AppointmentDataController.cs" />
     <Compile Include="Controllers\DepartmentController.cs" />
     <Compile Include="Controllers\DepartmentDataController.cs" />
+    <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DoctorsDataController.cs" />
     <Compile Include="Controllers\FAQDataController.cs" />
     <Compile Include="Controllers\FeedbacksDataController.cs" />
@@ -302,6 +303,7 @@
     <Compile Include="Models\ViewModels\DepartmentDetails.cs" />
     <Compile Include="Models\ViewModels\DepartmentList.cs" />
     <Compile Include="Models\ViewModels\DepartmentUpdate.cs" />
+    <Compile Include="Models\ViewModels\DoctorUpdate.cs" />
     <Compile Include="Models\ViewModels\NewAppointment.cs" />
     <Compile Include="Models\ViewModels\NewDepartment.cs" />
     <Compile Include="Models\Visit.cs" />
@@ -381,6 +383,12 @@
     <Content Include="Views\Department\New.cshtml" />
     <Content Include="Views\Department\Edit.cshtml" />
     <Content Include="Views\Department\DeleteConfirm.cshtml" />
+    <Content Include="Views\Doctor\Error.cshtml" />
+    <Content Include="Views\Doctor\DeleteConfirm.cshtml" />
+    <Content Include="Views\Doctor\List.cshtml" />
+    <Content Include="Views\Doctor\Details.cshtml" />
+    <Content Include="Views\Doctor\New.cshtml" />
+    <Content Include="Views\Doctor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
