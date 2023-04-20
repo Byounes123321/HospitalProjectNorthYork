@@ -1,0 +1,15 @@
+﻿@model HospitalProjectNorthYork.Models.FeedbacksDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<div class="detailsContainer">
+    <h2>Are you sure you want to delete feedback given by @Model.PatientName for appointment @Model.Appointment_ID?</h2>
+    <div class="buttonsBox">
+        <a href="/Feedback/List" class="btn btn-success">&raquo; Cancel</a>
+        <form action="/Feedback/Delete/@Model.Feedback_ID" method="POST">
+            <input type="submit" class="btn btn-danger" value="Confirm Delete" />
+        </form>
+    </div>
+</div>
+

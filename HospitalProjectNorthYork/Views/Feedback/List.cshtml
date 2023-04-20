@@ -1,0 +1,20 @@
+﻿@model IEnumerable<HospitalProjectNorthYork.Models.FeedbacksDto>
+@{
+    ViewBag.Title = "List";
+}
+
+<div class="listContainer">
+    <h2>List of feedbacks</h2>
+    <a href="/Feedback/New" class="btn btn-primary btn-lg">Add feedback</a>
+
+    @foreach (var feedback in Model)
+    {
+        <div class="listItem">
+            <h4>@feedback.Feedback_ID</h4>
+            <p>Patient Name - @feedback.PatientName</p>
+            <p>Appointment Date - @feedback.AppointmentDate</p>
+            <a href="/Feedback/Details/@feedback.Feedback_ID" class="btn btn-info">More Info &raquo;</a>
+        </div>
+    }
+</div>
+
