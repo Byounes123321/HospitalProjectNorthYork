@@ -189,6 +189,7 @@
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DoctorsDataController.cs" />
     <Compile Include="Controllers\FAQDataController.cs" />
+    <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FeedbacksDataController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LocationDataController.cs" />
@@ -303,6 +304,7 @@
     <Compile Include="Models\ViewModels\DepartmentDetails.cs" />
     <Compile Include="Models\ViewModels\DepartmentList.cs" />
     <Compile Include="Models\ViewModels\DepartmentUpdate.cs" />
+    <Compile Include="Models\ViewModels\DetailsFeedback.cs" />
     <Compile Include="Models\ViewModels\DoctorUpdate.cs" />
     <Compile Include="Models\ViewModels\NewAppointment.cs" />
     <Compile Include="Models\ViewModels\NewDepartment.cs" />
@@ -389,6 +391,13 @@
     <Content Include="Views\Doctor\Details.cshtml" />
     <Content Include="Views\Doctor\New.cshtml" />
     <Content Include="Views\Doctor\Edit.cshtml" />
+    <Content Include="Views\Feedback\DeleteConfirm.cshtml" />
+    <Content Include="Views\Feedback\Error.cshtml" />
+    <Content Include="Views\Feedback\List.cshtml" />
+    <Content Include="Views\Feedback\Edit.cshtml" />
+    <Content Include="Views\Feedback\Details.cshtml" />
+    <Content Include="Views\Feedback\New.cshtml" />
+    <Content Include="Views\Feedback\AppointmentsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

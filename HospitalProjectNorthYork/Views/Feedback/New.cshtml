@@ -1,0 +1,25 @@
+﻿@model IEnumerable<HospitalProjectNorthYork.Models.PatientDto>
+@{
+    ViewBag.Title = "New";
+}
+
+<div class="detailsContainer">
+    <h2>Create feedback</h2>
+    <form class="formAction" action="/Feedback/AppointmentsList" method="POST">
+        <div>
+            <label>Select Patient:</label>
+            <select name="Patient_ID">
+                @foreach (var patient in Model)
+                {
+                    <option value="@patient.Patient_ID">@patient.PatientName</option>
+
+                }
+            </select>
+        </div>
+
+        <div>
+            <input type="submit" class="btn btn-success" style="margin-top: 20px;" value="Find Appointments" />
+        </div>
+    </form>
+</div>
+
