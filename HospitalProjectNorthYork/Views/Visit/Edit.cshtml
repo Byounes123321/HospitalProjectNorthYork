@@ -1,0 +1,47 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.VisitUpdate
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Visit</h2>
+<form action="/Visit/Update/@Model.SelectedVisit.Visit_ID" method="post">
+    <div style="display:none;">
+        <input type="number" name="Visit_ID" id="Visit_ID" value="@Model.SelectedVisit.Visit_ID" />
+    </div>
+   
+    <div>
+        <label for="VisitDate">Date: </label>
+        <input type="date" id="VisitDate" name="VisitDate" value="@Model.SelectedVisit.VisitDate.ToString("yyyy-MM-dd")" />
+    </div>
+    <div>
+        <label for="PName">Patient: </label>
+        <select id="Patient_ID" name="Patient_ID">
+            @foreach (var P in Model.Patients)
+            {
+                var selected = "";
+                if (P.Patient_ID == Model.SelectedVisit.Patient_ID)
+                {
+                    selected = "selected";
+                }
+                <option value="@P.Patient_ID" @selected>@P.PatientName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="LName">Location: </label>
+        <select id="Location_ID" name="Location_ID">
+            @foreach (var l in Model.Locations)
+            {
+                var selected = "";
+                if (l.Location_ID == Model.Selectedvisit.Location_ID)
+                {
+                    selected = "selected";
+                }
+                <option value="@l.Location_ID" @selected>@l.LocationName</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Update Visit" />
+</form>
+
+

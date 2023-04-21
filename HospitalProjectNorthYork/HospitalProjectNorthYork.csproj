@@ -188,6 +188,7 @@
     <Compile Include="Controllers\DepartmentDataController.cs" />
     <Compile Include="Controllers\DoctorController.cs" />
     <Compile Include="Controllers\DoctorsDataController.cs" />
+    <Compile Include="Controllers\FAQController.cs" />
     <Compile Include="Controllers\FAQDataController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FeedbacksDataController.cs" />
@@ -195,6 +196,7 @@
     <Compile Include="Controllers\LocationDataController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PatientDataController.cs" />
+    <Compile Include="Controllers\VisitController.cs" />
     <Compile Include="Controllers\VisitDataController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -379,6 +381,18 @@
     <Content Include="Views\Appointment\Error.cshtml" />
     <Content Include="Views\Appointment\Edit.cshtml" />
     <Content Include="Views\Appointment\DeleteConfirm.cshtml" />
+    <Content Include="Views\Visit\New.cshtml" />
+    <Content Include="Views\Visit\List.cshtml" />
+    <Content Include="Views\Visit\Error.cshtml" />
+    <Content Include="Views\Visit\Edit.cshtml" />
+    <Content Include="Views\Visit\Details.cshtml" />
+    <Content Include="Views\Visit\DeleteConfirm.cshtml" />
+    <Content Include="Views\FAQ\DeleteConfirm.cshtml" />
+    <Content Include="Views\FAQ\Details.cshtml" />
+    <Content Include="Views\FAQ\Edit.cshtml" />
+    <Content Include="Views\FAQ\Error.cshtml" />
+    <Content Include="Views\FAQ\List.cshtml" />
+    <Content Include="Views\FAQ\New.cshtml" />
     <Content Include="Views\Department\List.cshtml" />
     <Content Include="Views\Department\Details.cshtml" />
     <Content Include="Views\Department\Error.cshtml" />

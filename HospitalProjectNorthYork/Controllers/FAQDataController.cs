@@ -31,7 +31,7 @@ namespace HospitalProjectNorthYork.Controllers
             {
                 Faq_ID = a.Faq_ID,
                 Ques = a.Ques,
-                Answer = a.Answer
+                Answer = a.Answer,
             }));
 
             return Ok(FAQDtos); ;
@@ -55,7 +55,7 @@ namespace HospitalProjectNorthYork.Controllers
             FAQS.ForEach(a => FAQDtos.Add(new FAQDto()
             {
                 Faq_ID = a.Faq_ID,
-               Ques = a.Ques,
+                Ques = a.Ques,
                 Answer = a.Answer
             }));
 
@@ -69,7 +69,7 @@ namespace HospitalProjectNorthYork.Controllers
         {
 
             List<FAQ> FAQS = db.FAQS.Where(
-             a => ! a.Departments.Any(
+             a => !a.Departments.Any(
                  k => k.Department_ID == Department_ID
              )).ToList();
 
@@ -88,10 +88,11 @@ namespace HospitalProjectNorthYork.Controllers
 
         // GET: api/FAQData/FindFAQ/5
         [ResponseType(typeof(FAQ))]
+        [Route("api/FAQData/FindFAQ/{Faq_ID}")]
         [HttpGet]
-        public IHttpActionResult FindFAQ(int id)
+        public IHttpActionResult FindFAQ(int Faq_ID)
         {
-            FAQ FAQ = db.FAQS.Find(id);
+            FAQ FAQ = db.FAQS.Find(Faq_ID);
             FAQDto FAQDto = new FAQDto()
             {
                 Faq_ID = FAQ.Faq_ID,
@@ -99,10 +100,7 @@ namespace HospitalProjectNorthYork.Controllers
                 Answer = FAQ.Answer
 
             };
-            if (FAQ == null)
-            {
-                return NotFound();
-            }
+           
 
             return Ok(FAQDto);
         }
@@ -110,6 +108,7 @@ namespace HospitalProjectNorthYork.Controllers
 
         // POST: api/FAQData/UpdateFAQ/5
         [ResponseType(typeof(void))]
+        [Route("api/FAQData/UpdateFAQ/{Faq_ID}")]
         [HttpPost]
         public IHttpActionResult UpdateFAQ(int Faq_ID, FAQ fAQ)
         {
