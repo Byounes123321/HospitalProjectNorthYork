@@ -1,0 +1,33 @@
+﻿@model IEnumerable<HospitalProjectNorthYork.Models.AppointmentDto>
+@{
+    ViewBag.Title = "AppointmentsList";
+}
+
+<div class="detailsContainer">
+    <h2>Create feedback</h2>
+    <form class="formAction" action="/Feedback/Create" method="POST">
+        <div>
+            <label>Select Appointment for the patient - @Model.FirstOrDefault().PatientName:</label>
+            <select name="Appointment_ID">
+                @foreach (var appointment in Model)
+                {
+                    <option value="@appointment.Appointment_ID">@appointment.AppointmentDesc</option>
+
+                }
+            </select>
+        </div>
+        <div style="display:none">
+            <input type="text" name="Patient_ID" value="@Model.FirstOrDefault().Patient_ID" />
+        </div>
+        <div>
+            <label>Feedback Description: </label>
+            <textarea name="FeedbackDesc" placeholder="Description of feedback"></textarea>
+        </div>
+
+        <div>
+            <input type="submit" class="btn btn-success" style="margin-top: 20px;" value="Create Feedback" />
+        </div>
+    </form>
+</div>
+
+

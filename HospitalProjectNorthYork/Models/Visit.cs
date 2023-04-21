@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -14,5 +15,20 @@ namespace HospitalProjectNorthYork.Models
 
         public DateTime VisitDate { get; set; }
         // date time of the appointment
+        [ForeignKey("Patient")]
+        public int Patient_ID { get; set; }
+        public virtual Patient Patient { get; set; }
+        [ForeignKey("Location")]
+        public int Location_ID { get; set; }
+        public virtual Location Location { get; set; }
+    }
+    public class VisitDto
+    {
+        public int Visit_ID { get; set; }
+        public DateTime VisitDate { get; set; }
+        public int Location_ID { get; set; }
+        public string LocationName { get; set; }
+        public int Patient_ID { get; set; }
+        public string PatientName { get; set; }
     }
 }

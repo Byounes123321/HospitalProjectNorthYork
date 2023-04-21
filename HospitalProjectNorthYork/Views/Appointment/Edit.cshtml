@@ -1,0 +1,64 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.AppointmentUpdate
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Appointment</h2>
+<form action="/Appointment/Update/@Model.SelectedAppointment.Appointment_ID" method="post">
+    <div style="display:none;">
+        <input type="number" name="Appointment_ID" id="Appointment_ID" value="@Model.SelectedAppointment.Appointment_ID" />
+    </div>
+    <div>
+        <label for="AppointmentDesc">Description: </label>
+        <input type="text" id="AppointmentDesc" name="AppointmentDesc" value="@Model.SelectedAppointment.AppointmentDesc" />
+    </div>
+    <div>
+        <label for="AppointmentDate">Date: </label>
+        <input type="date" id="AppointmentDate" name="AppointmentDate" value="@Model.SelectedAppointment.AppointmentDate.ToString("yyyy-MM-dd")"/>
+    </div>
+    <div>
+        <label for="PName">Patient: </label>
+        <select id="Patient_ID" name="Patient_ID">
+            @foreach (var P in Model.Patients)
+            {
+                var selected = "";
+                if (P.Patient_ID == Model.SelectedAppointment.Patient_ID)
+                {
+                    selected = "selected";
+                }
+                <option value="@P.Patient_ID" @selected>@P.PatientName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="DName">Doctor: </label>
+        <select id="Doctor_ID" name="Doctor_ID">
+            @foreach (var d in Model.Doctors)
+            {
+                var selected = "";
+                if (d.Doctor_ID == Model.SelectedAppointment.Doctor_ID)
+                {
+                    selected = "selected";
+                }
+                <option value="@d.Doctor_ID" @selected>@d.DoctorName</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label for="LName">Location: </label>
+        <select id="Location_ID" name="Location_ID">
+            @foreach (var l in Model.Locations)
+            {
+                var selected = "";
+                if (l.Location_ID == Model.SelectedAppointment.Location_ID)
+                {
+                    selected = "selected";
+                }
+                <option value="@l.Location_ID" @selected>@l.LocaitonName</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Update Appointment" />
+</form>
+
+

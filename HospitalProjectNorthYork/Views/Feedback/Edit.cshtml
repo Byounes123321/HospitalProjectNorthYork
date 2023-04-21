@@ -1,0 +1,37 @@
+﻿@model HospitalProjectNorthYork.Models.FeedbacksDto
+@{
+    ViewBag.Title = "Edit";
+}
+
+<div class="detailsContainer">
+    <h2>Edit feedback</h2>
+    <form class="formAction" action="/Feedback/Update/@Model.Feedback_ID" method="POST">
+        <div style="display:none">
+            <input type="text" name="Feedback_ID" value="@Model.Feedback_ID" />
+        </div>
+        <div style="display:none">
+            <input type="text" name="Patient_ID" value="@Model.Patient_ID" />
+        </div>
+        <div style="display:none">
+            <input type="text" name="Appointment_ID" value="@Model.Appointment_ID" />
+        </div>
+        <h2>
+            Feedback ID - @Model.Feedback_ID
+        </h2>
+        <div>
+            <b>Patient Name - </b> @Model.PatientName
+        </div>
+        <div>
+            <b>Appointment Id - </b> @Model.Appointment_ID <br />
+            <b>Appointment Description - </b> @Model.AppointmentDesc <br />
+            <b>Appointment Date - </b> @Model.AppointmentDate <br />
+        </div>
+        <div>
+            <label>Feedback Description: </label><textarea name="FeedbackDesc" placeholder="Description of feedback">@Model.FeedbackDesc</textarea>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-success" style="margin-top: 20px;" value="Update Feedback" />
+        </div>
+    </form>
+</div>
+

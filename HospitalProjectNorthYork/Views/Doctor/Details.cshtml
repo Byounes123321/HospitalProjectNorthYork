@@ -1,0 +1,16 @@
+﻿@model HospitalProjectNorthYork.Models.DoctorsDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="detailsContainer">
+    <h2>@Model.DoctorName</h2>
+    <p>@Model.DoctorBio</p>
+    <p><b>Department - @Model.DepartmentName</b> (@Model.DepartmentDesc)</p>
+    <div class="buttonsBox">
+        <a href="/Doctor/List" class="btn btn-success">&raquo; Go back</a>
+        <a href="/Doctor/Edit/@Model.Doctor_ID" class="btn btn-warning">Update</a>
+        <a href="/Doctor/DeleteConfirm/@Model.Doctor_ID" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+

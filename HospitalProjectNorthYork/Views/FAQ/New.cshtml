@@ -1,0 +1,33 @@
+﻿﻿@model HospitalProjectNorthYork.Models.ViewModels.NewFAQ
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create FAQ</h2>
+<a href="/FAQ/list">Back to list</a>
+<form action="/FAQ/Create" method="post">
+    <div>
+        <label for="Ques">Question: </label>
+        <input type="text" id="Ques" name="Ques" />
+    </div>
+    <div>
+        <label for="Answer">Answer: </label>
+        <input type="text" id="Answer" name="Answer" />
+    </div>
+
+
+    <input type="submit" value="Add FAQ" />
+</form>
+<div style="display:none">
+    <div>
+        <label for="Departments">FAQS: </label>
+        @foreach (var f in Model.department)
+        {
+            <input type="checkbox" id="@f.Department_ID" name="Departments" value="@f.Department_ID" />
+
+            <label for="@f.Department_ID">@f.DepartmentName/@f.DepartmentDesc</label>
+        }
+    </div>
+   
+
+</div>

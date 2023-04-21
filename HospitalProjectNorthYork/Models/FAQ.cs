@@ -15,5 +15,15 @@ namespace HospitalProjectNorthYork.Models
         // questions
         public string Answer { get; set; }
         // answer
+        // An FAQ can belong to multiple departments
+        public ICollection<Department> Departments { get; set; }
+    }
+
+    public class FAQDto
+    {
+        public int Faq_ID { get; set; }
+        public string Ques { get; set; }
+        public string Answer { get; set; }
+
     }
 }
