@@ -27,6 +27,8 @@ namespace HospitalProjectNorthYork.Models
         public int Visit_ID { get; set; }
         public DateTime VisitDate { get; set; }
         public int Location_ID { get; set; }
+        public string LocationName { get; set; }
         public int Patient_ID { get; set; }
+        public string PatientName { get; set; }
     }
 }

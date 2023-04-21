@@ -1,0 +1,19 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.AppointmentDetails
+@{
+    ViewBag.Title = "Details";
+}
+<a href="/Appointment/Edit/@Model.SelectedAppointment.Appointment_ID">EDIT</a>
+<a href="/Appointment/DeleteConfirm/@Model.SelectedAppointment.Appointment_ID">DELETE</a>
+<h2>Appointment @Model.SelectedAppointment.Appointment_ID details</h2>
+<p>Date: @Model.SelectedAppointment.AppointmentDate</p>
+<p>Desc: @Model.SelectedAppointment.AppointmentDesc</p>
+<p>Doc: @Model.Docter.DoctorName</p>
+<p>Doc bio:@Model.Docter.DoctorBio</p>
+<p>Local name: @Model.Location.LocaitonName</p>
+<p>Local Desc: @Model.Location.LocationDesc</p>
+<p>Patient Name: @Model.Patient.PatientName</p>
+<p>Paitent Date: @Model.Patient.PatientAdmittanceDate</p>
+
+
+
+

@@ -1,0 +1,37 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.NewVisit
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Visit</h2>
+<form action="/Visit/Create" method="post">
+    <div>
+        <label for="VisitDate">Date: </label>
+        <input type="date" id="VisitDate" name="VisitDate" />
+    </div>
+    
+    <div>
+        <label for="PName">Patient: </label>
+        <select id="Patient_ID" name="Patient_ID">
+            @foreach (var P in Model.Patient)
+            {
+                <option value="@P.Patient_ID">@P.PatientName</option>
+            }
+        </select>
+    </div>
+    
+    <div>
+        <label for="LName">Location: </label>
+        <select id="Location_ID" name="Location_ID">
+            @foreach (var l in Model.Location)
+            {
+                <option value="@l.Location_ID">@l.LocationName</option>
+            }
+        </select>
+    </div>
+    <input type="submit" value="Add Visit" />
+</form>
+
+
+
+

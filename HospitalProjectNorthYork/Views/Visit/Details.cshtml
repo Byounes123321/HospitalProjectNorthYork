@@ -1,0 +1,19 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.VisitDetails
+@{
+    ViewBag.Title = "Details";
+}
+<a href="/Visit/Edit/@Model.SelectedVisit.Visit_ID">EDIT</a>
+<a href="/Visit/DeleteConfirm/@Model.SelectedVisit.Visit_ID">DELETE</a>
+<h2>Visit @Model.SelectedVisit.Visit_ID details</h2>
+<p>Date: @Model.SelectedVisit.VisitDate</p>
+
+<p>Local name: @Model.Location.LocatuonName</p>
+<p>Local Desc: @Model.Location.LocationDesc</p>
+<p>Patient Name: @Model.Patient.PatientName</p>
+<p>Paitent Date: @Model.Patient.PatientAdmittanceDate</p>
+
+
+
+
+
+
