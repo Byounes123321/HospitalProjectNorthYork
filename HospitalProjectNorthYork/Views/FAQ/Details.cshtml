@@ -1,0 +1,66 @@
+﻿@﻿@model HospitalProjectNorthYork.Models.ViewModels.FAQDetails
+@{
+    ViewBag.Title = "Details";
+}
+<a href="/FAQ/Edit/@Model.SelectedFAQ.Faq_ID">EDIT</a>
+<a href="/FAQ/DeleteConfirm/@Model.SelectedFAQ.Faq_ID" style="color:red"><strong>DELETE</strong></a>
+<a href="/FAQ/list">Back to list</a>
+<h2>@Model.SelectedFAQ.Ques Question</h2>
+<p>Answer @Model.SelectedFAQ.Answer</p>
+
+
+
+<div class="col-md-6 col-sm-12">
+    <h4>Departments for @Model.SelectedFAQ.Ques:</h4>
+    @foreach (var f in Model.RelatedDepartments)
+    {
+
+        <a href="/Department/Details/@f.Department_ID">@f.DepartmentName @f.Desc</a>
+
+        <a style="color:#ab2020;" href="/FAQ/UnassociateDepartment/@Model.SelectedFAQ.Faq_ID?Department_ID=@f.Department_ID">[x]</a>
+        <br />
+    }
+
+    <div>
+
+        <form method="POST" action="/FAQ/DepartmentFAQ/@Model.SelectedFAQ.Faq_ID">
+            <select name="Department_ID">
+                q
+                <option value="">Select Department</option>
+                @foreach (var f in Model.UnrelatedDepartments)
+                {
+                    <option value="@f.Department_ID">@f.DepartmentName @f.DepartmentDesc</option>
+                }
+
+            </select>
+            <input type="submit" value="Add Department" />
+        </form>
+    </div>
+
+</div>
+
+<!--<div class="col-md-6 col-sm-12">
+    <h4>Locations for Model.SelectedDepartment.DepartmentName:</h4>
+    foreach (var l in Model.RelatedLocations)
+    {
+
+        <a href="/location/Details/l.Location_ID">l.LocaitonName</a>
+
+        <a style="color:#ab2020;" href="/Department/Unassociate/Model.SelectedDepartment.Department_ID?Location_ID=l.Location_ID">[x]</a>
+        <br />
+    }
+
+    <div>
+        <form method="POST" action="/Department/Associate/Model.SelectedDepartment.Department_ID">
+            <select name="Location_ID">
+                <option value="">Select Location</option>
+                foreach (var l in Model.unrelatedLocations)
+                {
+                    <option value="l.Location_ID">l.LocaitonName</option>
+                }
+            </select>
+            <input type="submit" value="Add Location" />
+        </form>
+    </div>
+</div>
+-->
