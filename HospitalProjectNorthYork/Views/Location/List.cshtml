@@ -1,0 +1,14 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.LocationList
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>Location List</h2>
+<a href="/Location/New">Add Location</a>
+
+@foreach(var location in Model.Locations)
+{
+<h2><a href="/Location/Details/@location.Location_ID">@location.LocaitonName</a></h2>
+<h3>@location.LocationDesc</h3>
+}
+

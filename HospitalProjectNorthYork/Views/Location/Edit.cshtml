@@ -1,0 +1,18 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.PatientUpdate
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Location</h2>
+<form action="/Location/Update.@Model.SelectedLocation.Location_ID" method="POST">
+    <div>
+        <label for="LocationName">Location Name:</label>
+        <input type="text" id="LocationName" name="LocationName" value="@Model.SelectedLocation.LocaitonName" />
+    </div>
+    <div>
+        <label for="LocationDesc">Location Description:</label>
+        <input type="text" id="LocationDesc" name="LocationDesc" value="@Model.SelectedLocation.LocationDesc" />
+    </div>
+    <input type="submit" value="Update Location" />
+</form>
+

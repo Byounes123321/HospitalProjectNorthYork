@@ -41,35 +41,70 @@ namespace HospitalProjectNorthYork.Controllers
             return LocationDtos;
         }
 
-              /// Returns all Location in the system.
+
+        /// <summary>
+        /// Returns a list of all Locations in the system by department id
+        /// </summary>
+        /// <param name="Department_ID">Primary key in the location table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all Departments in the database by specific Location id, including their associated data
+        /// </returns>
+        /// <example>
+        /// GET: api/LocationData/ListLocationForDepartment/{Department_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/LocationData/ListLocationForDepartment/{Department_ID}")]
+        [ResponseType(typeof(LocationDto))]
+        public IHttpActionResult ListLocationsForDepartment(int Department_ID)
+        {
+            List<Location> Locations = db.Locations.Where(
+                l => l.Departments.Any(
+                    d => d.Department_ID == Department_ID
+                    )).ToList();
+
+            List<LocationDto> LocationDtos = new List<LocationDto>();
+
+
+            Locations.ForEach(l => LocationDtos.Add(new LocationDto()
+            {
+                Location_ID = l.Location_ID,
+                LocaitonName = l.LocaitonName,
+                LocationDesc = l.LocationDesc
+            }));
+
+            return Ok(LocationDtos);
+        }
+
+        /// <summary>
+        /// Returns all locations in the system.
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: A Location in the system matching up to the Location ID primary key
+        /// CONTENT: An location in the system matching up to the location ID primary key
         /// or
         /// HEADER: 404 (NOT FOUND)
         /// </returns>
-        /// <param name="id">The primary key of the Location</param>
+        /// <param name="id">The primary key of the location</param>
         /// <example>
         /// GET: api/LocationData/FindLocation/5
         /// </example>
-        [ResponseType(typeof(Location))]
+        [ResponseType(typeof(LocationDto))]
         [HttpGet]
         public IHttpActionResult FindLocation(int id)
         {
             Location Location = db.Locations.Find(id);
             LocationDto LocationDto = new LocationDto()
-             { 
+            {
                 Location_ID = Location.Location_ID,
                 LocaitonName = Location.LocaitonName,
                 LocationDesc = Location.LocationDesc
             };
-            if (Location == null)
+            if(Location == null)
             {
                 return NotFound();
             }
-
-            return Ok(Location);
+            return Ok(LocationDto);
         }
 
          /// <summary>
@@ -90,6 +125,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdateLocation(int id, Location location)
         {
             if (!ModelState.IsValid)
@@ -139,6 +175,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [ResponseType(typeof(Location))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddLocation(Location location)
         {
             if (!ModelState.IsValid)
@@ -167,6 +204,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [ResponseType(typeof(Location))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult DeleteLocation(int id)
         {
             Location location = db.Locations.Find(id);

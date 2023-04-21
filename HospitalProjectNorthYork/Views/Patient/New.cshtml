@@ -1,0 +1,19 @@
+﻿@model HospitalProjectNorthYork.Models.PatientDto
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Patient</h2>
+<form action="/Patient/New" method="POST">
+    <div>
+        <label>Name:</label> <input type="text" name="PatientName" />
+    </div>
+    <div>
+        <label>Date Of Birth:</label> <input type="number" name="PatientDateOfBirth" />
+    </div>
+    <div>
+        <label>Admittance Date:</label> <input type="number" name="PatientAdmittanceDate" />
+    </div>
+    <input type="submit" value="Add Patient" />
+</form>

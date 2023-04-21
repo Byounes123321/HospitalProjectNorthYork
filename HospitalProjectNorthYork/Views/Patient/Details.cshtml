@@ -1,0 +1,10 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.PatientDetails
+@{
+    ViewBag.Title = "Details";
+}
+
+<a href="/Patient/List">Go back to List</a>
+<h2>@Model.SelectedPatient.PatientName</h2>
+<div>addmittanceDate: @Model.SelectedPatient.PatientAdmittanceDate</div>
+<div>dateOfBirth: @Model.SelectedPatient.PatientDateOfBirth</div>
+

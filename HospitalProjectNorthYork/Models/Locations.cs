@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HospitalProjectNorthYork.Models
 {
@@ -16,6 +17,7 @@ namespace HospitalProjectNorthYork.Models
         public string LocationDesc { get; set; }
         //Description of the location
         // A location can have multiple departments
+        [ForeignKey("Departments")]
         public ICollection<Department> Departments { get; set; }
     }
 
