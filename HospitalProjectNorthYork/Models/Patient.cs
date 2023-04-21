@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -17,6 +18,8 @@ namespace HospitalProjectNorthYork.Models
         //patient admittance date
         public DateTime PatientDateOfBirth { get; set; }
         //patient DOB
+        public ICollection<Appointment> Appointments;
+        public ICollection<Visit> Visits;
     }
 
     public class PatientDto

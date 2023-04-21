@@ -1,0 +1,27 @@
+﻿@model HospitalProjectNorthYork.Models.LocationDto
+@{
+    ViewBag.Title = "DeleteConfirm";
+}
+
+<body>
+    <p>
+        <a href="/Location/details/@Model.Location_ID">
+            Cancel
+        </a>
+    </p>
+    <h2>Are you sure you want to remove this Location?</h2>
+    <h2>All data associated with this Location will be deleted as well</h2>
+
+
+
+    <h2>@Model.Location_ID</h2>
+    <p>@Model.LocaitonName</p>
+    <p>@Model.LocationDesc</p>
+
+
+    <form action="/Location/delete/@Model.Location_ID" method="post">
+        <input type="submit" value="Confirm Delete" />
+    </form>
+
+</body>
+

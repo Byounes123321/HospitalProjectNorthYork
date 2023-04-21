@@ -1,0 +1,22 @@
+﻿
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit Patient</h2>
+<form action="/Patient/Update.@Model.SelectedPatient.Patient_ID" method="POST">
+    <div>
+    <label for="PatientName">Patient Name:</label>
+    <input type="text" id="PatientName" name="PatientName" value="@Model.selectedPatient.PatientName" />
+    </div>
+    <div>
+        <label for="PatientAdmittanceDate">Patient Admittance Date:</label>
+        <input type="text" id="PatientAdmittanceDate" name="PatientAdmittanceDate" value="@Model.selectedPatient.PatientAdmittanceDate.ToString("yyyy-MM-dd")" />
+    </div>
+    <div>
+        <label for="PatientDateOfBirth">Date Of Birth: </label>
+        <input type="date" id="PatientDateOfBirth" name="PatientDateOfBirth" value="@Model.selectedPatient.PatientDateOfBirth.ToString("yyyy-MM-dd")" />
+    </div>
+    <input type="submit" value="Update Patient" />
+</form>
+

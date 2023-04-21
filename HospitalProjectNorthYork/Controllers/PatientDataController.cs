@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -43,20 +45,90 @@ namespace HospitalProjectNorthYork.Controllers
                 return PatientDtos;
         }
 
-         /// <summary>
-        /// Returns all Patients in the system.
+        /// <summary>
+        /// Returns a list of all patients in the system by appointment id
+        /// </summary>
+        /// <param name="Doctor_Id">Primary key in the appointments table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all patients in the database by specific appointment id, including their associated data
+        /// </returns>
+        /// <example>
+        /// GET: api/PatientData/ListPatientsForAppointment/{Appointment_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/PatientData/ListPatientsForAppointment/{Appointment_ID")]
+        [ResponseType(typeof(PatientDto))]
+        public IHttpActionResult ListPatientsForAppointment(int Appointment_ID)
+        {
+            List<Patient> Patients = db.Patients.Where(
+             p => p.Appointments.Any(
+                 b => b.Appointment_ID == Appointment_ID
+             )).ToList();
+
+            List<PatientDto> PatientDtos = new List<PatientDto>();
+
+
+            Patients.ForEach(p => PatientDtos.Add(new PatientDto()
+            {
+                Patient_ID = p.Patient_ID,
+                PatientName = p.PatientName,
+                PatientAdmittanceDate = p.PatientAdmittanceDate,
+                PatientDateOfBirth = p.PatientDateOfBirth,
+
+            }));
+
+            return Ok(PatientDtos);
+    }
+
+        /// <summary>
+        /// Returns a list of all patients in the system by visit id
+        /// </summary>
+        /// <param name="Doctor_Id">Primary key in the visits table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all patients in the database by specific visit id, including their associated data
+        /// </returns>
+        /// <example>
+        /// GET: api/PatientData/ListPatientsForVisit/{visit_Id}
+        /// </example>
+
+        public IHttpActionResult ListPatientsForVisit(int Visit_ID)
+        {
+            List<Patient> Patients = db.Patients.Where(
+             p => p.Visits.Any(
+                 b => b.Visit_ID == Visit_ID
+             )).ToList();
+
+            List<PatientDto> PatientDtos = new List<PatientDto>();
+
+
+            Patients.ForEach(p => PatientDtos.Add(new PatientDto()
+            {
+                Patient_ID = p.Patient_ID,
+                PatientName = p.PatientName,
+                PatientAdmittanceDate = p.PatientAdmittanceDate,
+                PatientDateOfBirth = p.PatientDateOfBirth,
+
+            }));
+
+            return Ok(PatientDtos);
+        }
+
+        /// <summary>
+        /// Returns all patients in the system.
         /// </summary>
         /// <returns>
         /// HEADER: 200 (OK)
-        /// CONTENT: A Patient in the system matching up to the Patient ID primary key
+        /// CONTENT: An patient in the system matching up to the patient ID primary key
         /// or
         /// HEADER: 404 (NOT FOUND)
         /// </returns>
-        /// <param name="id">The primary key of the Patient</param>
+        /// <param name="id">The primary key of the patient</param>
         /// <example>
         /// GET: api/PatientData/FindPatient/5
         /// </example>
-        [ResponseType(typeof(Patient))]
+        [ResponseType(typeof(PatientDto))]
         [HttpGet]
         public IHttpActionResult FindPatient(int id)
         {
@@ -76,7 +148,7 @@ namespace HospitalProjectNorthYork.Controllers
             return Ok(PatientDto);
         }
 
-         /// <summary>
+        /// <summary>
         /// Updates a particular Patient in the system with POST Data input
         /// </summary>
         /// <param name="id">Represents the Patient ID primary key</param>
@@ -94,6 +166,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [ResponseType(typeof(void))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult UpdatePatient(int id, Patient patient)
         {
             if (!ModelState.IsValid)
@@ -143,6 +216,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [ResponseType(typeof(Patient))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult AddPatient(Patient patient)
         {
             if (!ModelState.IsValid)
@@ -171,6 +245,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [ResponseType(typeof(Patient))]
         [HttpPost]
+        [Authorize]
         public IHttpActionResult DeletePatient(int id)
         {
             Patient patient = db.Patients.Find(id);
