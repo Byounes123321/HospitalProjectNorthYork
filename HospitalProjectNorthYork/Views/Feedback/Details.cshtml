@@ -1,0 +1,19 @@
+﻿@model HospitalProjectNorthYork.Models.FeedbacksDto
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="detailsContainer">
+    <h2>@Model.Feedback_ID</h2>
+    <p>@Model.FeedbackDesc</p>
+    <p><b>Patient</b> - @Model.PatientName</p>
+    <p><b>Appointment ID</b> - @Model.Appointment_ID</p>
+    <p><b>Appointment Description</b> - @Model.AppointmentDesc</p>
+    <p><b>Appointment Date</b> - @Model.AppointmentDate</p>
+    <div class="buttonsBox">
+        <a href="/Feedback/List" class="btn btn-success">&raquo; Go back</a>
+        <a href="/Feedback/Edit/@Model.Feedback_ID" class="btn btn-warning">Update</a>
+        <a href="/Feedback/DeleteConfirm/@Model.Feedback_ID" class="btn btn-danger">Delete</a>
+    </div>
+</div>
+

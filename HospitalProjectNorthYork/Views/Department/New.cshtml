@@ -1,0 +1,41 @@
+﻿@model HospitalProjectNorthYork.Models.ViewModels.NewDepartment
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create Department</h2>
+<a href="/Department/list">Back to list</a>
+<form action="/Department/Create" method="post">
+    <div>
+        <label for="DepartmentName">Name: </label>
+        <input type="text" id="DepartmentName" name="DepartmentName" />
+    </div>
+    <div>
+        <label for="DepartmentDesc">Description: </label>
+        <input type="text" id="DepartmentDesc" name="DepartmentDesc" />
+    </div>
+
+
+    <input type="submit" value="Add Department" />
+</form>
+<div style="display:none">
+    <div>
+        <label for="FAQs">FAQS: </label>
+        @foreach (var f in Model.fAQ)
+        {
+            <input type="checkbox" id="@f.Faq_ID" name="FAQs" value="@f.Faq_ID" />
+
+            <label for="@f.Faq_ID">@f.Ques/@f.Answer</label>
+        }
+    </div>
+    <div>
+        <label for="Locations">Location: </label>
+        @foreach (var l in Model.Location)
+        {
+            <input type="checkbox" id="@l.Location_ID" name="Locations" value="@l.Location_ID" />
+
+            <label for="@l.Location_ID">@l.LocaitonName</label>
+        }
+    </div>
+
+</div>

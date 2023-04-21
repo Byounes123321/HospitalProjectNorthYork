@@ -195,7 +195,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// Updates a particular appointment in the system with POST Data input
         /// </summary>
         /// <param name="Appointment_ID">Represents the Appointment ID primary key</param>
-        /// <param name="Appointment">JSON FORM DATA of an appointment</param>
+        /// <param name="appointment">JSON FORM DATA of an appointment</param>
         /// <returns>
         /// HEADER: 204 (Success, No Content Response)
         /// or

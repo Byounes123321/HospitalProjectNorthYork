@@ -81,9 +81,44 @@ namespace HospitalProjectNorthYork.Controllers
             return Ok(DepartmentDtos);
         }
         /// <summary>
+        /// Returns a list of all Departments in the system not related to a location
+        /// </summary>
+        /// <param name="Location_ID">Primary key in the location table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all Departments in the database not including those from a specific id, including their associated data
+        /// </returns>
+        /// <example>
+        /// GET: api/DepartmentData/ListDepartmentsNotForLocation/{Location_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/DepartmentData/ListDepartmentsNotForLocation/{Location_ID}")]
+        [ResponseType(typeof(DepartmentDto))]
+        public IHttpActionResult ListDepartmentsNotForLocation(int Location_ID)
+        {
+
+            List<Department> Departments = db.Departments.Where(
+             a => !a.Locations.Any(
+                 k => k.Location_ID == Location_ID
+             )).ToList();
+
+            List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
+
+
+            Departments.ForEach(a => DepartmentDtos.Add(new DepartmentDto()
+            {
+                Department_ID = a.Department_ID,
+                DepartmentName = a.DepartmentName,
+                DepartmentDesc = a.DepartmentDesc
+            }));
+
+            return Ok(DepartmentDtos);
+        }
+
+        /// <summary>
         /// Returns a list of all Departments in the system by FAQ id
         /// </summary>
-        /// <param name="faq_id">Primary key in the FAQ table</param>
+        /// <param name="Faq_ID">Primary key in the FAQ table</param>
         /// <returns>
         /// HEADER: 200 (OK)
         /// CONTENT: all Departments in the database by specific FAQ id, including their associated data
@@ -115,7 +150,68 @@ namespace HospitalProjectNorthYork.Controllers
             return Ok(DepartmentDtos);
         }
 
+        /// <summary>
+        /// Returns a list of all Departments in the system not associated with an FAQ
+        /// </summary>
+        /// <param name="Faq_ID">Primary key in the FAQ table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: all Departments in the database where there is no FAQ associated, including their associated data
+        /// </returns>
+        /// <example>
+        /// GET: api/DepartmentData/ListDepartmentsNotForFAQ/{FAQ_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/DepartmentData/ListDepartmentsNotForFAQ/{FAQ_ID}")]
+        [ResponseType(typeof(DepartmentDto))]
+        public IHttpActionResult ListDepartmentsNotForFAQ(int Faq_ID)
+        {
 
+            List<Department> Departments = db.Departments.Where(
+             a => !a.FAQs.Any(
+                 k => k.Faq_ID == Faq_ID
+             )).ToList();
+
+            List<DepartmentDto> DepartmentDtos = new List<DepartmentDto>();
+
+
+            Departments.ForEach(a => DepartmentDtos.Add(new DepartmentDto()
+            {
+                Department_ID = a.Department_ID,
+                DepartmentName = a.DepartmentName,
+                DepartmentDesc = a.DepartmentDesc
+            }));
+
+            return Ok(DepartmentDtos);
+        }
+
+
+        ///<summary>
+        ///Returns a specific Department called by its id
+        /// </summary>
+        /// <param name="Department_ID"> Primary key in the departments table</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// CONTENT: Department in the database that matching the Department_ID key
+        /// </returns>
+        /// <example>
+        /// GET: api/DepartmentData/FindDepartment/{Appointment_ID}
+        /// </example>
+        [HttpGet]
+        [Route("api/DepartmentData/FindDepartment/{Department_ID}")]
+        [ResponseType(typeof(DepartmentDto))]
+        public IHttpActionResult FindDepartment(int Department_ID)
+        {
+            Department Department = db.Departments.Find(Department_ID);
+            DepartmentDto departmentDto = new DepartmentDto()
+            {
+                Department_ID = Department.Department_ID,
+                DepartmentName =Department.DepartmentName,    
+                DepartmentDesc= Department.DepartmentDesc,
+            };
+
+            return Ok(departmentDto);
+        }
         /// <summary>
         /// Adds an Department to the system
         /// </summary>
@@ -149,7 +245,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// Updates a particular Department in the system with POST Data input
         /// </summary>
         /// <param name="Department_ID">Represents the Department ID primary key</param>
-        /// <param name="Department">JSON FORM DATA of an Department</param>
+        /// <param name="department">JSON FORM DATA of an Department</param>
         /// <returns>
         /// HEADER: 204 (Success, No Content Response)
         /// or
@@ -161,6 +257,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// POST: api/DepartmentData/UpdateDepartment/2
         /// FORM DATA: Department JSON Object
         [ResponseType(typeof(void))]
+        [Route("api/DepartmentData/UpdateDepartment/{Department_ID}")]
         [HttpPost]
         public IHttpActionResult UpdateDepartment(int Department_ID, Department department)
         {
@@ -252,7 +349,6 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [HttpPost]
         [Route("api/DepartmentData/AssociateDepartmentWithLocation/{Department_ID}/{Location_ID}")]
-        [Authorize]
         public IHttpActionResult AssociateDepartmentWithLocation(int Department_ID, int Location_ID)
         {
 
@@ -285,7 +381,6 @@ namespace HospitalProjectNorthYork.Controllers
         /// </example>
         [HttpPost]
         [Route("api/DepartmentData/AssociateDepartmentWithFAQ/{Department_ID}/{FAQ_ID}")]
-        [Authorize]
         public IHttpActionResult AssociateDepartmentWithFAQ(int Department_ID, int FAQ_ID)
         {
 
@@ -298,6 +393,71 @@ namespace HospitalProjectNorthYork.Controllers
             }
 
             SelectedDepartment.FAQs.Add(SelectedFAQ);
+            db.SaveChanges();
+
+            return Ok();
+        }
+
+        /// <summary>
+        /// Removes an association between a particular department and a location animal
+        /// </summary>
+        /// <param name="Department_ID">The department ID primary key</param>
+        /// <param name="Location_ID">The location ID primary key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/departmentData/UnAssociateDepartmentWithLocaiton/9/1
+        /// </example>
+        [HttpPost]
+        [Route("api/departmentData/UnAssociateDepartmentWithLocaiton/{Department_Id}/{Location_ID}")]
+        public IHttpActionResult UnAssociateDepartmentWithLocaiton(int Department_ID, int Location_ID)
+        {
+
+            Department SelectedDepartment = db.Departments.Include(a => a.Locations).Where(a => a.Department_ID == Department_ID).FirstOrDefault();
+            Location SelectedLocation = db.Locations.Find(Location_ID);
+
+            if (SelectedDepartment == null || SelectedLocation == null)
+            {
+                return NotFound();
+            }
+
+
+            SelectedDepartment.Locations.Remove(SelectedLocation);
+            db.SaveChanges();
+
+            return Ok();
+        }
+        /// <summary>
+        /// Removes an association between a particular department and a FAQ 
+        /// </summary>
+        /// <param name="Department_ID">The department ID primary key</param>
+        /// <param name="FAQ_ID">The FAQ ID primary key</param>
+        /// <returns>
+        /// HEADER: 200 (OK)
+        /// or
+        /// HEADER: 404 (NOT FOUND)
+        /// </returns>
+        /// <example>
+        /// POST api/departmentData/UnAssociateDepartmentWithFAQ/9/1
+        /// </example>
+        [HttpPost]
+        [Route("api/departmentData/UnAssociateDepartmentWithFAQ/{Department_Id}/{FAQ_ID}")]
+        public IHttpActionResult UnAssociateDepartmentWithFAQ(int Department_ID, int FAQ_ID)
+        {
+
+            Department SelectedDepartment = db.Departments.Include(a => a.FAQs).Where(a => a.Department_ID == Department_ID).FirstOrDefault();
+            FAQ SelectedFAQ = db.FAQS.Find(FAQ_ID);
+
+            if (SelectedDepartment == null || SelectedFAQ == null)
+            {
+                return NotFound();
+            }
+
+
+            SelectedDepartment.FAQs.Remove(SelectedFAQ);
             db.SaveChanges();
 
             return Ok();
