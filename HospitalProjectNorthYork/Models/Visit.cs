@@ -22,4 +22,11 @@ namespace HospitalProjectNorthYork.Models
         public int Location_ID { get; set; }
         public virtual Location Location { get; set; }
     }
+    public class VisitDto
+    {
+        public int Visit_ID { get; set; }
+        public DateTime VisitDate { get; set; }
+        public int Location_ID { get; set; }
+        public int Patient_ID { get; set; }
+    }
 }

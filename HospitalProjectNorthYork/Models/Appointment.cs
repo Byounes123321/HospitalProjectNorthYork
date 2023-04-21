@@ -26,12 +26,15 @@ namespace HospitalProjectNorthYork.Models
         [ForeignKey("Location")]
         public int Location_ID { get; set; }
         public virtual Location Location { get; set; }
+        
     }
-    /* 
-     * TODO: Add foreign keys for the following tables: 
-     *       Patient_ID
-     *       Doctor_ID
-     *       Location_ID
-     */
-
+    public class AppointmentDto
+    {
+        public int Appointment_ID { get; set; }
+        public string AppointmentDesc { get; set; }
+        public DateTime AppointmentDate { get; set; }
+        public int? Patient_ID { get; set; }
+        public int Doctor_ID { get; set; }
+        public int Location_ID { get; set; }
+    }
 }
