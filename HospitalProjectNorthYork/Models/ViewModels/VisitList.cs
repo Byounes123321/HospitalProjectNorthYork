@@ -5,8 +5,8 @@ using System.Web;
 
 namespace HospitalProjectNorthYork.Models.ViewModels
 {
-    public class AppointmentList
+    public class VisitList
     { 
-        public IEnumerable<AppointmentDto> Appointments { get; set; }
+        public IEnumerable<VisitDto> Visits { get; set; }
     }
 }

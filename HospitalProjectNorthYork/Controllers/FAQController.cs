@@ -86,7 +86,7 @@ namespace HospitalProjectNorthYork.Controllers
           
             //add the information to the view model
             NewFAQ viewModel = new NewFAQ();
-            viewModel.Department = departmentInfo;
+            viewModel.department = departmentInfo;
            
 
 
@@ -133,14 +133,14 @@ namespace HospitalProjectNorthYork.Controllers
 
             FAQDto SelectedFAQ = response.Content.ReadAsAsync<FAQDto>().Result;
           
-            ViewModel.SelectedFAQ = SelectedFAQ;
+            ViewModel.FAQs = SelectedFAQ;
 
 
             url = "DepartmentData/listDepartments/";
             response = client.GetAsync(url).Result;
             IEnumerable<DepartmentDto> department = response.Content.ReadAsAsync<IEnumerable<DepartmentDto>>().Result;
 
-            ViewModel.department = departments;
+            ViewModel.department = department;
 
           
             return View(ViewModel);

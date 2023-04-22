@@ -341,7 +341,7 @@
     <Content Include="Content\Site.css" />
     <None Include="jsondata\patient.json" />
     <None Include="jsondata\location.json" />
-    <None Include="jsondata\Appointment.json" />
+    <None Include="jsondata\appointment.json" />
     <None Include="jsondata\Departments.json" />
     <None Include="jsondata\FAQ.json" />
     <Content Include="Scripts\bootstrap.js" />

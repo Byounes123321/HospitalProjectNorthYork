@@ -57,7 +57,7 @@ namespace HospitalProjectNorthYork.Controllers
         /// GET: api/PatientData/ListPatientsForAppointment/{Appointment_ID}
         /// </example>
         [HttpGet]
-        [Route("api/PatientData/ListPatientsForAppointment/{Appointment_ID")]
+        [Route("api/PatientData/ListPatientsForAppointment/{Appointment_ID}")]
         [ResponseType(typeof(PatientDto))]
         public IHttpActionResult ListPatientsForAppointment(int Appointment_ID)
         {
